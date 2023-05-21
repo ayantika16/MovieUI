@@ -1,0 +1,26 @@
+.outer{
+    background-color: black;
+    opacity:0.9;
+    color:white;
+    width:70%;
+    margin:auto;
+    margin-top:30px;
+    text-align:center;
+}
+.inner{
+    display:flex;
+}
+.div1{
+    width:40%;
+    padding-bottom: 30px;
+}
+.div2{
+    width:60%;
+    padding-right: 30px;
+}
+
+table {
+    width: 100%;
+  }
+  
+  

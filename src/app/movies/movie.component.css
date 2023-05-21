@@ -1,0 +1,21 @@
+.example-card {
+    max-width: 400px;
+    margin-bottom: 8px;
+  }
+
+  .cont{
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.innercont{
+    
+    margin:20px;
+    padding: 10px;
+    background-color: black;
+    opacity: 0.9;
+
+    
+}

@@ -1,0 +1,59 @@
+<div class="card text-center" class="outer">
+    <div class="card-header" style="font-size: 30px; height: 55px; padding-top:10px;">
+      {{mov?.movieName}}
+    </div>
+    <div class="card-body" class="inner">
+      <div class="div1"><img [src]="mov?.imageUrl" width="200px" height="300px"/></div>
+        <div class="div2">
+
+            <table class="table table-hover table-dark">
+                
+                <tbody>
+                  <tr>
+                    <td>Movie Id</td>
+                    <td>{{mov?.movieId}}</td>
+                  </tr>
+
+                  <tr>
+                    <td>Movie Name</td>
+                    <td>{{mov?.movieName}}</td>
+                  </tr>
+
+                  <tr>
+                    <td>Theatre Name</td>
+                    <td>{{mov?.theatreName}}</td>
+                  </tr>
+
+                  <tr>
+                    <td>Director Name</td>
+                    <td>{{mov?.directorName}}</td>
+                  </tr>
+
+                  <tr>
+                    <td>Screening Type</td>
+                    <td>{{mov?.screeningType}}</td>
+                  </tr>
+
+                  <tr>
+                    <td>Total Seats</td>
+                    <td>{{mov?.totalSeats}}</td>
+                  </tr>
+
+                  <tr>
+                    <td>Seats Available</td>
+                    <td>{{mov?.seatsAvailable}}</td>
+                  </tr>
+                  
+                  <tr>
+                    <td><b>Enter the number of Tickets You want to book</b></td>
+                    <td>
+                        <input type="number" id="bookedTickets" value=1 min="1" [max]="mov?.seatsAvailable">
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <button mat-raised-button color="warn" style="margin-bottom: 15px;">Book Tickets</button>
+        </div>
+    </div>
+  </div>

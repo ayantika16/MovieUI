@@ -9,11 +9,15 @@ import { Movie } from "../models/movie";
 })
 export class MovieService{
 
-    private baseURL="http://localhost:8090/api/v1/moviebooking";
+    private baseURL="http://localhost:8090/api/v2/moviebooking";
 
     constructor(private httpClient:HttpClient) { }
 
   getMoviesList():Observable<Movie[]>{
     return this.httpClient.get<Movie[]>(`${this.baseURL}/getAllMovies`);
+  }
+
+  getMovieById(movieId: number):Observable<Movie>{
+    return this.httpClient.get<Movie>(`${this.baseURL}/searchByMovieId/${movieId}`);
   }
 }

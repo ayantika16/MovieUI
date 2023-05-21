@@ -16,6 +16,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { TokenInterceptorService } from './services/token-interceptor.service';
+import { MoviedetailsComponent } from './movies/moviedetails.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
     AboutusComponent,
     ContactusComponent,
     MovieComponent,
-    LoginComponent
+    LoginComponent,
+    MoviedetailsComponent
   ],
   imports: [
     BrowserModule,

@@ -9,6 +9,8 @@ import { MovieService } from '../services/movie.service';
 })
 export class MovieComponent implements OnInit{
 
+  pageTitle="Movies List";
+
   movies:Movie[] | undefined;
   constructor(private movieService:MovieService) { }
 
