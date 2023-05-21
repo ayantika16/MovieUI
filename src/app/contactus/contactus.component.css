@@ -1,0 +1,19 @@
+/*For designing the contactus properly*/
+.container{
+    margin:auto;
+    margin-top: 20px;
+    width: 80%;
+    background-color: silver;
+    border:none;
+    border-radius: 30px;
+    padding: 30px;
+}
+
+mat-form-field{
+    width: 100%;
+}
+.cont1{
+    margin:auto;
+    margin-top: 20px;
+    width: 70%;
+}

@@ -1,0 +1,18 @@
+.header{
+    background-color: #FF6D6A;
+    padding-left: 500px;
+    text-align: center;
+}
+
+.nav-link{
+
+    background-color: #FF6D6A;
+    border:none;
+    margin-left:10px;
+    color: white;
+    font-size: 18px;
+
+}
+.mr{
+    margin-right: 10px;
+}

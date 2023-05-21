@@ -1,0 +1,21 @@
+.full-width{
+    width: 100%;
+}
+
+.logindiv{
+    background-color: aliceblue;
+    width:60%;
+    padding-top: 60px;
+}
+.upperdiv{
+    display: flex;
+    padding-top: 30px;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+.imagediv{
+    width: 40%;
+}
+.image-center{
+    margin-left: 140px;
+}

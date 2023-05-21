@@ -1,0 +1,67 @@
+<div class="cont1">
+    <img src="../../assets/images/contact.jpg" width="450px" height="200px"/>
+</div>
+
+<!--For Showing the Contact Us form using Angular Material UI-->
+<div class="container">
+
+
+  <form [formGroup]="addContact">
+
+    <!--Creating the form field for firstname-->
+<div class="example-container">
+    <mat-form-field hintLabel="Max 20 characters" appearance="fill">
+        <mat-label>Enter First Name</mat-label>
+        <input matInput #firstname class="firstname" maxlength="20" placeholder="Ex. John" name="firstname" formControlName="firstname">
+        <mat-hint align="end">{{firstname.value.length}}/20</mat-hint>
+        <mat-error *ngIf="myError('firstname', 'required')">First Name is required</mat-error>
+                <mat-error *ngIf="myError('firstname', 'minlength')">Minimum Length of First Name is 4</mat-error>
+                <mat-error *ngIf="myError('firstname', 'maxlength')">Maximum Length of first Name is 20</mat-error>
+      </mat-form-field>
+    
+  </div>
+
+  <!--Creating the form field for last name-->
+  <div class="example-container">
+  
+    <mat-form-field hintLabel="Max 20 characters" appearance="fill">
+        <mat-label>Enter Last Name</mat-label>
+        <input matInput #lastname class="lastname" maxlength="20" placeholder="Ex. Datta" name="lastname" formControlName="lastname">
+        <mat-hint align="end">{{lastname.value.length}}/20</mat-hint>
+        <mat-error *ngIf="myError('lastname', 'required')">Last Name is required</mat-error>
+                <mat-error *ngIf="myError('lastname', 'minlength')">Minimum Length of Last Name is 3</mat-error>
+                <mat-error *ngIf="myError('lastname', 'maxlength')">Maximum Length of Last Name is 20</mat-error>
+      </mat-form-field>
+  
+  </div>
+
+  <!--Creating the form field for email id-->
+  <div class="example-container">
+    
+    <mat-form-field hintLabel="Max 40 characters" appearance="fill">
+        <mat-label>Enter Email ID</mat-label>
+        <input matInput #email class="email" maxlength="40" placeholder="Ex. ayantika@gmail.com" name="email" formControlName="email">
+        <mat-hint align="end">{{email.value.length}}/40</mat-hint>
+        <mat-error *ngIf="myError('email', 'required')">Email is required</mat-error>
+                <mat-error *ngIf="myError('email', 'email')">Please Provide A email in Correct Format</mat-error>
+                
+      </mat-form-field>
+ 
+  </div>
+
+    <!--Creating the form field for Comments-->
+  <div class="example-container">
+  <mat-form-field appearance="fill">
+    <mat-label>Comments</mat-label>
+    <textarea matInput name="comment" class="comment" formControlName="comment"></textarea>
+
+    <mat-error *ngIf="myError('comment', 'required')">Comment is required</mat-error>
+  </mat-form-field>
+  </div>
+
+  <!--Creating the Button To Submit the Contact information-->
+  <div class="example-container">
+    <button mat-raised-button color="accent" [disabled]='!addContact.valid ||!addContact.dirty' (click)="contactSubmit()">SAVE</button>
+  </div>
+  </form>
+  </div>

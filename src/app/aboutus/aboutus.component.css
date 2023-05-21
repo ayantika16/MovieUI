@@ -1,0 +1,14 @@
+.container{
+    display: flex;
+    margin-top: 15px;
+}
+
+.div1{
+    width: 40%;
+    margin-right: 20px;
+}
+
+.div2{
+    width: 60%;
+    padding-left: 60px;
+}

@@ -1,0 +1,32 @@
+<div class="container">
+    <ngb-carousel *ngIf="images">
+        <ng-template ngbSlide>
+            <div class="picsum-img-wrapper" id="image1">
+                <img [src]="images[0].src" alt="Random first slide" />
+            </div>
+            <div class="carousel-caption">
+                <h3 style="color: red; font-size: 20px; font-weight: bold;" id="welcome">Welcome To BookShow</h3>
+                <p style="color: red;">Book Tickets of Streaming movies now</p>
+            </div>
+        </ng-template>
+        <ng-template ngbSlide>
+            <div class="picsum-img-wrapper" id="image2">
+                <img [src]="images[1].src" alt="Random second slide" />
+            </div>
+            <div class="carousel-caption">
+                <h3 style="color: black; font-size: 20px; font-weight: bold;">Sign in </h3>
+                <p style="color: black;">Look at the Streaming and Upcoming movies</p>
+            </div>
+        </ng-template>
+        <ng-template ngbSlide>
+            <div class="picsum-img-wrapper" id="image3">
+                <img [src]="images[2].src" alt="Random third slide" />
+            </div>
+            <div class="carousel-caption">
+                <h3 style="color:white; font-size: 20px; font-weight: bold;">Book Tickets Now</h3>
+                <p style="color: white;">Reschedule or cancel it anytime</p>
+            </div>
+        </ng-template>
+        
+    </ngb-carousel>
+    </div>

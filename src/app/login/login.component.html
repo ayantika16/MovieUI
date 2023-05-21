@@ -1,0 +1,55 @@
+<div class="upperdiv">
+    <div class="imagediv">
+        <img src="../../assets/images/login.jpg" width="450px" height="400px"/>
+    </div>
+    <div class="logindiv">
+    <div class="bootstrap-wrapper">
+    <div class="container mt3">
+        <div class="row">
+            <!--<div class="container text-center">
+                <img class="img-fluid" style="width: 100px;" src="/assets/password.png">
+            </div>-->
+            <div class="col-md-6 offset-md-3">
+                <img class="image-center" src="../../assets/images/login.png" width="100px" height="100px"/>
+                <div class="alert alert-danger" *ngIf="this.isCorrectPassword()">{{errorMsg}} : Wrong Password !!</div>
+               <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                        <label><b>Username</b></label>
+                        <input [class.is-invalid]="userName!.invalid && 
+                                                   userName!.touched" 
+                                                   formControlName="userName" type="text"
+                                                   class="form-control" >
+                        <div *ngIf="userName!.invalid && 
+                                    userName!.touched">
+
+                                    <small *ngIf="userName?.errors?.['required']" class="text-danger">User Name is Required<br></small>
+                                    <small *ngIf="userName?.errors?.['validPattern']" class="text-danger">Must be a valid email</small>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label><b>Password</b></label>
+                        <input  [class.is-invalid]="loginForm.get('password')!.invalid && 
+                                                    loginForm.get('password')!.touched"
+                                                    formControlName="password" type="password" 
+                                                    class="form-control"
+                                                    (focus)="removeError()">
+                                        <div *ngIf="password!.invalid && 
+                                                    password!.touched">                
+                                                <small *ngIf="password?.errors?.['required']" class="text-danger">Password is Required<br></small>
+                                                <small *ngIf="password?.errors?.['validPattern']" class="text-danger">Password must contain one digit , one uppercase , one lowercase ,one special character and no white Spaces</small>
+
+                                        </div>
+                    </div>
+                    <div class="container text-center mt">
+                        <button type="submit"  mat-raised-button color="primary">Login</button>
+                        <button type="reset" style="margin-left:10px ;" mat-raised-button color="accent">Reset</button>
+                    </div>
+                </form>
+
+                <!-- {{credentials|json}} -->
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
