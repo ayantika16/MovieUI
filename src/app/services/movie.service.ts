@@ -9,7 +9,7 @@ import { Movie } from "../models/movie";
 })
 export class MovieService{
 
-    private baseURL="http://localhost:8090/api/v2/moviebooking";
+    private baseURL="http://localhost:8090/api/v1/moviebooking";
 
     constructor(private httpClient:HttpClient) { }
 
@@ -20,4 +20,18 @@ export class MovieService{
   getMovieById(movieId: number):Observable<Movie>{
     return this.httpClient.get<Movie>(`${this.baseURL}/searchByMovieId/${movieId}`);
   }
+
+  addMovie(movie: Movie):Observable<Movie>{
+    return this.httpClient.post<Movie>(`${this.baseURL}/addMovie`, movie);
+  }
+
+  updateMovie(movie: Movie):Observable<Movie>{
+    return this.httpClient.put<Movie>(`${this.baseURL}/updateMovie`, movie);
+  }
+
+  deleteMovie(movieId: number):Observable<String>{
+    return this.httpClient.delete<String>(`${this.baseURL}/deleteMovie/${movieId}`);
+  }
+
+
 }

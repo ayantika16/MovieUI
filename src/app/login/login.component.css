@@ -3,9 +3,12 @@
 }
 
 .logindiv{
-    background-color: aliceblue;
+    background-color: black;
+    color:white;
+    opacity: 0.9;
     width:60%;
-    padding-top: 60px;
+    border-radius: 25px;
+   
 }
 .upperdiv{
     display: flex;
@@ -18,4 +21,52 @@
 }
 .image-center{
     margin-left: 140px;
+}
+
+.buttondiv{
+    display: flex;
+    width: 100%;
+    
+}
+.sign1{
+    width:50%;
+    height: 45px;
+    border-top:none;
+    border-bottom: none;
+    border-left: none;
+    font-size: 25px;
+    background-color: skyblue;
+    opacity: 0.8;
+}
+.sign2{
+    width:50%;
+    height: 45px;
+    border-top:none;
+    border-bottom: none;
+    border-right: none;
+    font-size: 25px;
+    background-color: skyblue;
+    opacity: 0.8;
+    
+    
+}
+
+mat-form-field{
+    width:90%;
+}
+.signupdiv{
+    margin:auto;
+    padding-top: 10px;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+
+.passwordDiv{
+    background-color: black;
+    opacity: 0.9;
+    width:50%;
+    margin: auto;
+    margin-top: 40px;
+    padding-top: 20px;
 }

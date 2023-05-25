@@ -1,0 +1,28 @@
+mat-form-field{
+    width: 80%;
+}
+
+.parentdiv{
+    width: 90%;
+    margin:auto;
+    text-align: center;
+}
+
+.upperdiv{
+    display: flex;
+    margin: auto;
+    width: 90%;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.div1{
+    width: 45%;
+}
+.div2{
+    width: 45%;
+}
+.editbutton{
+    padding-left: 350px;
+    padding-bottom: 20px;
+}

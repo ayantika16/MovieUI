@@ -1,9 +1,9 @@
 <div class="card text-center" style="background-color: transparent; color:white;">
     <div class="card-header" style="font-size:30px; font-weight:bold;">
-      {{pageTitle}}
+      <input class="form-control form-control-lg" type="text" [(ngModel)]="fname" (input)="filterMov()" placeholder="Search By Movie Name" style="margin:auto; width:60%;">
     </div>
     <div class="card-body" class="cont">
-        <mat-card class="example-card" *ngFor="let mov of movies; let i=index" class="innercont">
+        <mat-card class="example-card" *ngFor="let mov of filteredMovies; let i=index" class="innercont">
             <mat-card-header>
               <mat-card-title-group>
                 <mat-card-title style="color: white">{{mov.movieName}}</mat-card-title>
@@ -20,4 +20,6 @@
       2 days ago
     </div>
   </div>
+
+
 <router-outlet></router-outlet>

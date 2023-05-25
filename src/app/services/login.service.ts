@@ -1,16 +1,43 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
+import { Observable } from 'rxjs';
+import { User } from '../models/user';
+
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
   // url="http://localhost:8083";
-  url = "http://localhost:8084";
+  url = "http://localhost:9090";
   // requetHeader= new HttpHeaders({'No-Auth:'True'});
 
+  signupurl="http://localhost:9090/auth/v1/registerNewUser";
+
+
   constructor(private http: HttpClient) { }
+
+  addUser(user: User):Observable<User>{
+    return this.http.post<User>(`${this.signupurl}`, user,{
+      headers: new HttpHeaders({ 'No-Auth': 'True' })
+    });
+  }
+
+  forgotPassword(username: String):Observable<String>{
+    return this.http.get<String>(`${this.url}/auth/v1/forgot`,{
+      headers: new HttpHeaders({'No-Auth':'True'})
+    }
+    );
+  }
+
+  updatePassword(user:User):Observable<User>{
+    return this.http.put<User>(`${this.url}/auth/v1/forgot/${user.username}/updatePassword`,user,{
+      headers: new HttpHeaders({ 'No-Auth': 'True' })
+    });
+  }
+
+  
 
   //calling the server to generate token
   generateToken(credentials: any) {

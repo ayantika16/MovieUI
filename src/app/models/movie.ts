@@ -1,3 +1,5 @@
+import { Ticket } from "./ticket";
+
 export class Movie {
     
     movieId: number | any;
@@ -8,7 +10,7 @@ export class Movie {
     screeningType: string | undefined;
     totalSeats: number | undefined;
     seatsAvailable: number | undefined;
-    
+    ticketList: Array<Ticket> | undefined;
 
 
 }

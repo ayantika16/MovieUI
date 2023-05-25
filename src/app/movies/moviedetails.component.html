@@ -1,3 +1,4 @@
+<div *ngIf="main" class="maindiv">
 <div class="card text-center" class="outer">
     <div class="card-header" style="font-size: 30px; height: 55px; padding-top:10px;">
       {{mov?.movieName}}
@@ -44,16 +45,90 @@
                     <td>{{mov?.seatsAvailable}}</td>
                   </tr>
                   
-                  <tr>
-                    <td><b>Enter the number of Tickets You want to book</b></td>
-                    <td>
-                        <input type="number" id="bookedTickets" value=1 min="1" [max]="mov?.seatsAvailable">
-                    </td>
-                  </tr>
+                 
                 </tbody>
               </table>
 
-              <button mat-raised-button color="warn" style="margin-bottom: 15px;">Book Tickets</button>
+              <button mat-raised-button color="warn" style="margin-bottom: 15px;" (click)="callForm()">Book Tickets</button>
         </div>
     </div>
+  </div>
+
+  <div *ngIf="showForm">
+    <div class="card text-center" class="outer2">
+      <div class="card-header" style="font-size: 30px; height: 55px; padding-top:10px;">
+        {{pageTitle}}
+      </div>
+      <div class="card-body" >
+      <form class="example-form" [formGroup]="addTicket"
+      (ngSubmit)="bookTicket()">
+  
+    
+  <div class="example-container">
+          <mat-form-field class="example-full-width" >
+              <mat-label>BOOKING NAME</mat-label>
+              <input matInput #bookingName class="bookingName" placeholder="Ex. Booking Name" name="bookingName" formControlName="bookingName">
+              <mat-hint align="start"><strong>Enter The Ticket Booking Name</strong> </mat-hint>
+              <mat-hint align="end">{{bookingName.value.length}} / 30</mat-hint>
+              <mat-error *ngIf="myError('bookingName', 'required')">Booking Name is required</mat-error>
+              <mat-error *ngIf="myError('bookingName','minlength')">Minimum Length of Name is 4</mat-error>
+              <mat-error *ngIf="myError('bookingName', 'maxlength')">Maximum Length of Name is 30</mat-error>
+            </mat-form-field>
+  </div>
+  
+  
+
+  <div class="example-container">
+            <mat-form-field class="example-full-width">
+              <mat-label>SEATS TO BE BOOKED</mat-label>
+              <input matInput type="number" #bookedSeats class="bookedSeats" placeholder="1" name="bookedSeats" formControlName="bookedSeats">
+              <mat-hint align="start"><strong>Enter the Seats to be booked</strong> </mat-hint>
+              <mat-error *ngIf="myError('bookedSeats', 'required')">Booked Seats is required</mat-error>
+              
+            </mat-form-field>
+            </div>
+  
+           
+            <button id="btn1" [disabled]='!addTicket.valid ||!addTicket.dirty' class="btn btn-success">BOOK</button>
+        </form>
+  </div>
+  </div>
+  </div>
+</div>
+  <div *ngIf="!main"class="finalDiv" class="outer">
+    <p style="text-align: center; color:aliceblue; font-size:25px; padding-top: 8px;">TICKET DETAILS</p>
+    <table class="table table-hover table-dark">
+                
+      <tbody>
+        <tr>
+          <td>Movie Id</td>
+          <td>{{mov?.movieId}}</td>
+        </tr>
+
+        <tr>
+          <td>Movie Name</td>
+          <td>{{mov?.movieName}}</td>
+        </tr>
+
+        <tr>
+          <td>Theatre Name</td>
+          <td>{{mov?.theatreName}}</td>
+        </tr>
+
+        <tr>
+          <td>Booking Name</td>
+          <td>{{tick?.bookingName}}</td>
+        </tr>
+
+        <tr>
+          <td>Booked Seats</td>
+          <td>{{tick?.bookedSeats}}</td>
+        </tr>
+
+        
+       
+      </tbody>
+    </table>
+
+    <button mat-raised-button color="accent" style="margin-bottom: 15px;" (click)="navigateMovies()">Browse More Movies</button>
   </div>

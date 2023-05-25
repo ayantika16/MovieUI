@@ -14,17 +14,42 @@ export class MovieComponent implements OnInit{
   movies:Movie[] | undefined;
   constructor(private movieService:MovieService) { }
 
+  filteredMovies:Movie[]|undefined;
+
+  fname!:string;
+
   ngOnInit(): void {
    this.getMovies();
+ 
+  // this.filteredMovies=this.movies;
   }
+
+ 
   private getMovies(){
     this.movieService.getMoviesList().subscribe(data=>{
+      this.filteredMovies=data;
       this.movies=data;
-      console.log(this.movies);
+      console.log(this.filteredMovies);
       
     },err=>{
       console.log(err);
     });
   }
+
+  filterMov():void{
+   
+    
+      //console.log(this.fname);
+
+    if(this.fname!=''){
+    this.filteredMovies=this.movies?.filter((m)=>{
+      //console.log(m.movieName);
+      return m.movieName?.toLowerCase()?.startsWith(this.fname.toLowerCase())
+    });
+  }else{
+    this.filteredMovies=this.movies;
+  }
+
+}
 
 }

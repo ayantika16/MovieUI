@@ -1,15 +1,22 @@
 <div class="upperdiv">
+   
     <div class="imagediv">
         <img src="../../assets/images/login.jpg" width="450px" height="400px"/>
     </div>
     <div class="logindiv">
-    <div class="bootstrap-wrapper">
+
+        <div class="buttondiv">
+            <button class="sign1" (click)="signin()">Sign In</button>
+           
+            <button class="sign2" (click)="signup()">Sign Up</button>
+        </div>
+    <div class="bootstrap-wrapper" *ngIf="sign_in">
     <div class="container mt3">
         <div class="row">
             <!--<div class="container text-center">
                 <img class="img-fluid" style="width: 100px;" src="/assets/password.png">
             </div>-->
-            <div class="col-md-6 offset-md-3">
+            <div class="col-md-6 offset-md-3" style="padding-top: 15px;">
                 <img class="image-center" src="../../assets/images/login.png" width="100px" height="100px"/>
                 <div class="alert alert-danger" *ngIf="this.isCorrectPassword()">{{errorMsg}} : Wrong Password !!</div>
                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
@@ -48,8 +55,118 @@
 
                 <!-- {{credentials|json}} -->
             </div>
+
+            <div style="text-align: center; padding-top:12px; color:cornflowerblue;"><a (click)="openDialog()"><u>forgot password</u></a></div>
+            <br>
+            <div style="text-align: center; color: cornflowerblue;"><a (click)="signup()"><u>Not have an account? Create New Account</u></a></div>
         </div>
     </div>
 </div>
+
+<div class="signupdiv" *ngIf="sign_up">
+
+    <form class="example-form" [formGroup]="addUser"
+    (ngSubmit)="addNewUser()">
+
+    <div class="example-container">
+        <mat-form-field class="example-full-width" >
+            <mat-label>USER NAME</mat-label>
+            <input matInput #username2 class="username2" placeholder="Ex. User@123" name="username2" formControlName="username2">
+            <mat-hint align="start"><strong>Enter The User Name</strong> </mat-hint>
+            <mat-hint align="end">{{username2.value.length}} / 30</mat-hint>
+            <mat-error *ngIf="myError('username2', 'required')">User Name is required</mat-error>
+            <mat-error *ngIf="myError('username2','minlength')">Minimum Length of User Name is 4</mat-error>
+            <mat-error *ngIf="myError('username2', 'maxlength')">Maximum Length of User Name is 30</mat-error>
+          </mat-form-field>
+    </div>
+    
+    <div class="example-container">
+        <mat-form-field class="example-full-width" >
+            <mat-label>PASSWORD</mat-label>
+            <input matInput #password2 class="password2" placeholder="Ex. password" name="password2" formControlName="password2">
+            <mat-hint align="start"><strong>Enter The Password</strong> </mat-hint>
+            <mat-hint align="end">{{password2.value.length}} / 30</mat-hint>
+            <mat-error *ngIf="myError('password2', 'required')">Password is required</mat-error>
+            <mat-error *ngIf="myError('password2','validPattern')">Password must contain one digit , one uppercase , one lowercase ,one special character and no white Spaces</mat-error>
+            
+          </mat-form-field>
 </div>
+
+<div class="example-container">
+    <mat-form-field class="example-full-width" >
+        <mat-label>EMAIL ID</mat-label>
+        <input matInput #email class="email" placeholder="Ex. user@gmail.com" name="email" formControlName="email">
+        <mat-hint align="start"><strong>Enter Your Email Id</strong> </mat-hint>
+        <mat-hint align="end">{{email.value.length}} / 30</mat-hint>
+        <mat-error *ngIf="myError('email', 'required')">Email Id is required</mat-error>
+        <mat-error *ngIf="myError('email','validPattern')">Please Enter Correct Email Id</mat-error>
+      
+      </mat-form-field>
+</div>
+
+<div class="example-container">
+    <mat-form-field class="example-full-width" >
+        <mat-label>PET NAME</mat-label>
+        <input matInput #petname class="petname" placeholder="Ex. dog" name="petname" formControlName="petname">
+        <mat-hint align="start"><strong>Enter Your Pet Name</strong> </mat-hint>
+        <mat-hint align="end">{{petname.value.length}} / 30</mat-hint>
+        <mat-error *ngIf="myError('petname', 'required')">Pet Name is required</mat-error>
+    
+      </mat-form-field>
+      </div>
+
+      <button id="btn1" [disabled]='!addUser.valid ||!addUser.dirty' class="btn btn-success">Sign Up</button>
+
+
+</form>
+
+</div>
+</div>
+
+</div>
+
+<div class="passwordDiv" style="color: white; text-align: center;" *ngIf="pass_word">
+    <h4 style="text-align: center; font-size: 30px;">Update Password</h4>
+
+    <form class="example-form" [formGroup]="updatePass"
+    (ngSubmit)="updatePassword()">
+
+    <div class="example-container">
+        <mat-form-field class="example-full-width" >
+            <mat-label>USER NAME</mat-label>
+            <input matInput #username3 class="username3" placeholder="Ex. User@123" name="username3" formControlName="username3">
+            <mat-hint align="start"><strong>Enter The User Name</strong> </mat-hint>
+            <mat-hint align="end">{{username3.value.length}} / 30</mat-hint>
+            <mat-error *ngIf="myError2('username3', 'required')">User Name is required</mat-error>
+            <mat-error *ngIf="myError2('username3','minlength')">Minimum Length of User Name is 4</mat-error>
+            <mat-error *ngIf="myError2('username3', 'maxlength')">Maximum Length of User Name is 30</mat-error>
+          </mat-form-field>
+    </div>
+
+    <div class="example-container">
+        <mat-form-field class="example-full-width" >
+            <mat-label>PET NAME</mat-label>
+            <input matInput #petname2 class="petname2" placeholder="Ex. dog" name="petname2" formControlName="petname2">
+            <mat-hint align="start"><strong>Enter Your Pet Name</strong> </mat-hint>
+            <mat-hint align="end">{{petname2.value.length}} / 30</mat-hint>
+            <mat-error *ngIf="myError2('petname2', 'required')">Pet Name is required</mat-error>
+        
+          </mat-form-field>
+          </div>
+
+          <div class="example-container">
+            <mat-form-field class="example-full-width" >
+                <mat-label>NEW PASSWORD</mat-label>
+                <input matInput #password3 class="password3" placeholder="Ex. password" name="password3" formControlName="password3">
+                <mat-hint align="start"><strong>Enter The New Password</strong> </mat-hint>
+                <mat-hint align="end">{{password3.value.length}} / 30</mat-hint>
+                <mat-error *ngIf="myError2('password3', 'required')">Password is required</mat-error>
+                <mat-error *ngIf="myError2('password3','validPattern')">Password must contain one digit , one uppercase , one lowercase ,one special character and no white Spaces</mat-error>
+                
+              </mat-form-field>
+    </div>
+
+    <button id="btn1" [disabled]='!updatePass.valid ||!updatePass.dirty' class="btn btn-success">UPDATE PASSWORD</button>
+    </form>
+
 </div>

@@ -7,6 +7,16 @@
     margin-top:30px;
     text-align:center;
 }
+
+.outer2{
+    background-color: rgb(14, 3, 3);
+    opacity:0.9;
+    color:white;
+    width:70%;
+    margin:auto;
+    margin-top:30px;
+    text-align:center;
+}
 .inner{
     display:flex;
 }
@@ -22,5 +32,9 @@
 table {
     width: 100%;
   }
+
+  mat-form-field{
+    width: 90%;
+}
   
   

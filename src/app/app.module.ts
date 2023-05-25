@@ -17,6 +17,10 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { MoviedetailsComponent } from './movies/moviedetails.component';
+import { MovieticketComponent } from './movieticket/movieticket.component';
+import { MovieeditComponent } from './movieedit/movieedit.component';
+import { ForgetpasswordComponent } from './forgetpassword/forgetpassword.component';
+
 
 @NgModule({
   declarations: [
@@ -28,7 +32,11 @@ import { MoviedetailsComponent } from './movies/moviedetails.component';
     ContactusComponent,
     MovieComponent,
     LoginComponent,
-    MoviedetailsComponent
+    MoviedetailsComponent,
+    MovieticketComponent,
+    MovieeditComponent,
+    ForgetpasswordComponent
+   
   ],
   imports: [
     BrowserModule,

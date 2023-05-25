@@ -1,0 +1,108 @@
+<div class="titlediv">
+  <h1 style="font-size: 30px; text-align:center; font-weight: bold; padding-top: 8px;">Edit {{data.movieName}}</h1>
+</div>
+
+
+<div class="parentDiv">
+<form class="example-form" [formGroup]="editMovie"
+      (ngSubmit)="editNewMovie()">
+  
+<div class="upperdiv">
+  <div class="div1">
+  <div class="example-container">
+          <mat-form-field class="example-full-width" >
+              <mat-label>MOVIE ID</mat-label>
+              <input matInput #movieId class="movieId" placeholder="Ex. 110" name="movieId" formControlName="movieId">
+              <mat-hint align="start"><strong>Enter The Movie Id</strong> </mat-hint>
+              <mat-hint align="end">{{movieId.value.length}} / 30</mat-hint>
+              <mat-error *ngIf="myError('movieId', 'required')">Movie ID is required</mat-error>
+      
+            </mat-form-field>
+  </div>
+
+  <div class="example-container">
+    <mat-form-field class="example-full-width" >
+        <mat-label>MOVIE NAME</mat-label>
+        <input matInput #movieName class="movieName" placeholder="Ex. Movie Name" name="movieName" formControlName="movieName">
+        <mat-hint align="start"><strong>Enter The Movie Name</strong> </mat-hint>
+        <mat-hint align="end">{{movieName.value.length}} / 50</mat-hint>
+        <mat-error *ngIf="myError('movieName', 'required')">Movie Name is required</mat-error>
+        <mat-error *ngIf="myError('movieName','minlength')">Minimum Length of Name is 1</mat-error>
+        <mat-error *ngIf="myError('movieName', 'maxlength')">Maximum Length of Name is 50</mat-error>
+      </mat-form-field>
+</div>
+
+<div class="example-container">
+  <mat-form-field class="example-full-width" >
+      <mat-label>THEATRE NAME</mat-label>
+      <input matInput #theatreName class="theatreName" placeholder="Ex. Inox" name="theatreName" formControlName="theatreName">
+      <mat-hint align="start"><strong>Enter The Theatre Name</strong> </mat-hint>
+      <mat-hint align="end">{{theatreName.value.length}} / 50</mat-hint>
+      <mat-error *ngIf="myError('theatreName', 'required')">Theatre Name is required</mat-error>
+      <mat-error *ngIf="myError('theatreName','minlength')">Minimum Length of Theatre Name is 1</mat-error>
+      <mat-error *ngIf="myError('theatreName', 'maxlength')">Maximum Length of Theatre Name is 50</mat-error>
+    </mat-form-field>
+</div>
+
+<div class="example-container">
+  <mat-form-field class="example-full-width" >
+      <mat-label>MOVIE IMAGE URL</mat-label>
+      <input matInput #imageUrl class="imageUrl" placeholder="Ex. Image URL" name="imageUrl" formControlName="imageUrl">
+      <mat-hint align="start"><strong>Enter The Movie Image URL</strong> </mat-hint>
+      <mat-hint align="end">{{imageUrl.value.length}} / 100</mat-hint>
+      <mat-error *ngIf="myError('imageUrl', 'required')">Image URL is required</mat-error>
+
+    </mat-form-field>
+</div>
+</div>
+<div class="div2">
+<div class="example-container">
+<mat-form-field class="example-full-width" >
+  <mat-label>MOVIE DIRECTOR NAME</mat-label>
+  <input matInput #directorName class="directorName" placeholder="Ex. John" name="directorName" formControlName="directorName">
+  <mat-hint align="start"><strong>Enter The Movie Director Name</strong> </mat-hint>
+  <mat-hint align="end">{{directorName.value.length}} / 50</mat-hint>
+  <mat-error *ngIf="myError('directorName', 'required')">Director Name is required</mat-error>
+
+</mat-form-field>
+</div>
+
+<div class="example-container">
+<mat-form-field class="example-full-width" >
+  <mat-label>SCREENING TYPE</mat-label>
+  <input matInput #screeningType class="screeningType" placeholder="Ex. 3D" name="screeningType" formControlName="screeningType">
+  <mat-hint align="start"><strong>Enter The Movie Screening Type</strong> </mat-hint>
+  <mat-hint align="end">{{screeningType.value.length}} / 30</mat-hint>
+  <mat-error *ngIf="myError('screeningType', 'required')">Screening Type is required</mat-error>
+
+</mat-form-field>
+  </div>
+  
+
+  <div class="example-container">
+            <mat-form-field class="example-full-width">
+              <mat-label>TOTAL SEATS</mat-label>
+              <input matInput type="number" #totalSeats class="totalSeats" placeholder="100" name="totalSeats" formControlName="totalSeats">
+              <mat-hint align="start"><strong>Enter the Total Seats</strong> </mat-hint>
+              <mat-error *ngIf="myError('totalSeats', 'required')">Total Seats is required</mat-error>
+              
+            </mat-form-field>
+            </div>
+
+            <div class="example-container">
+              <mat-form-field class="example-full-width">
+                <mat-label>SEATS AVAILABLE</mat-label>
+                <input matInput type="number" #seatsAvailable class="seatsAvailable" placeholder="100" name="seatsAvailable" formControlName="seatsAvailable">
+                <mat-hint align="start"><strong>Enter the Available Seats</strong> </mat-hint>
+                <mat-error *ngIf="myError('seatsAvailable', 'required')">Available Seats is required</mat-error>
+                
+              </mat-form-field>
+              </div>
+  </div>
+  </div>
+  <div class="editbutton">
+            <button mat-raised-button color="accent" type="submit" class="btn1" [disabled]='!editMovie.valid ||!editMovie.dirty' mat-dialog-close cdkFocusInitial>UPDATE MOVIE</button>
+        </div>
+          </form>
+
+</div>

@@ -1,0 +1,185 @@
+<div class="add">
+<mat-expansion-panel (opened)="panelOpenState = true"
+(closed)="panelOpenState = false">
+<mat-expansion-panel-header>
+<mat-panel-title>
+NEW MOVIE
+</mat-panel-title>
+<mat-panel-description>
+Add New Movie here
+</mat-panel-description>
+</mat-expansion-panel-header>
+
+
+<form class="example-form" [formGroup]="addMovie"
+      (ngSubmit)="addNewMovie()">
+  
+    
+  <div class="example-container">
+          <mat-form-field class="example-full-width" >
+              <mat-label>MOVIE ID</mat-label>
+              <input matInput #movieId class="movieId" placeholder="Ex. 110" name="movieId" formControlName="movieId">
+              <mat-hint align="start"><strong>Enter The Movie Id</strong> </mat-hint>
+              <mat-hint align="end">{{movieId.value.length}} / 30</mat-hint>
+              <mat-error *ngIf="myError('movieId', 'required')">Movie ID is required</mat-error>
+      
+            </mat-form-field>
+  </div>
+
+  <div class="example-container">
+    <mat-form-field class="example-full-width" >
+        <mat-label>MOVIE NAME</mat-label>
+        <input matInput #movieName class="movieName" placeholder="Ex. Movie Name" name="movieName" formControlName="movieName">
+        <mat-hint align="start"><strong>Enter The Movie Name</strong> </mat-hint>
+        <mat-hint align="end">{{movieName.value.length}} / 50</mat-hint>
+        <mat-error *ngIf="myError('movieName', 'required')">Movie Name is required</mat-error>
+        <mat-error *ngIf="myError('movieName','minlength')">Minimum Length of Name is 1</mat-error>
+        <mat-error *ngIf="myError('movieName', 'maxlength')">Maximum Length of Name is 50</mat-error>
+      </mat-form-field>
+</div>
+
+<div class="example-container">
+  <mat-form-field class="example-full-width" >
+      <mat-label>THEATRE NAME</mat-label>
+      <input matInput #theatreName class="theatreName" placeholder="Ex. Inox" name="theatreName" formControlName="theatreName">
+      <mat-hint align="start"><strong>Enter The Theatre Name</strong> </mat-hint>
+      <mat-hint align="end">{{theatreName.value.length}} / 50</mat-hint>
+      <mat-error *ngIf="myError('theatreName', 'required')">Theatre Name is required</mat-error>
+      <mat-error *ngIf="myError('theatreName','minlength')">Minimum Length of Theatre Name is 1</mat-error>
+      <mat-error *ngIf="myError('theatreName', 'maxlength')">Maximum Length of Theatre Name is 50</mat-error>
+    </mat-form-field>
+</div>
+
+<div class="example-container">
+  <mat-form-field class="example-full-width" >
+      <mat-label>MOVIE IMAGE URL</mat-label>
+      <input matInput #imageUrl class="imageUrl" placeholder="Ex. Image URL" name="imageUrl" formControlName="imageUrl">
+      <mat-hint align="start"><strong>Enter The Movie Image URL</strong> </mat-hint>
+      <mat-hint align="end">{{imageUrl.value.length}} / 100</mat-hint>
+      <mat-error *ngIf="myError('imageUrl', 'required')">Image URL is required</mat-error>
+
+    </mat-form-field>
+</div>
+<div class="example-container">
+<mat-form-field class="example-full-width" >
+  <mat-label>MOVIE DIRECTOR NAME</mat-label>
+  <input matInput #directorName class="directorName" placeholder="Ex. John" name="directorName" formControlName="directorName">
+  <mat-hint align="start"><strong>Enter The Movie Director Name</strong> </mat-hint>
+  <mat-hint align="end">{{directorName.value.length}} / 50</mat-hint>
+  <mat-error *ngIf="myError('directorName', 'required')">Director Name is required</mat-error>
+
+</mat-form-field>
+</div>
+
+<div class="example-container">
+<mat-form-field class="example-full-width" >
+  <mat-label>SCREENING TYPE</mat-label>
+  <input matInput #screeningType class="screeningType" placeholder="Ex. 3D" name="screeningType" formControlName="screeningType">
+  <mat-hint align="start"><strong>Enter The Movie Screening Type</strong> </mat-hint>
+  <mat-hint align="end">{{screeningType.value.length}} / 30</mat-hint>
+  <mat-error *ngIf="myError('screeningType', 'required')">Screening Type is required</mat-error>
+
+</mat-form-field>
+  </div>
+  
+
+  <div class="example-container">
+            <mat-form-field class="example-full-width">
+              <mat-label>TOTAL SEATS</mat-label>
+              <input matInput type="number" #totalSeats class="totalSeats" placeholder="100" name="totalSeats" formControlName="totalSeats">
+              <mat-hint align="start"><strong>Enter the Total Seats</strong> </mat-hint>
+              <mat-error *ngIf="myError('totalSeats', 'required')">Total Seats is required</mat-error>
+              
+            </mat-form-field>
+            </div>
+
+            <div class="example-container">
+              <mat-form-field class="example-full-width">
+                <mat-label>SEATS AVAILABLE</mat-label>
+                <input matInput type="number" #seatsAvailable class="seatsAvailable" placeholder="100" name="seatsAvailable" formControlName="seatsAvailable">
+                <mat-hint align="start"><strong>Enter the Available Seats</strong> </mat-hint>
+                <mat-error *ngIf="myError('seatsAvailable', 'required')">Available Seats is required</mat-error>
+                
+              </mat-form-field>
+              </div>
+  
+           
+            <button id="btn1" [disabled]='!addMovie.valid ||!addMovie.dirty' class="btn btn-success">ADD MOVIE</button>
+        </form>
+</mat-expansion-panel>
+</div>
+
+<div class="card text-center" class="outer">
+    <div class="card-header" style="height: 50px; padding-top:10px;">
+        <table class="table table-borderless table-dark table-hover" style="font-size: 20px;">
+              <tr>
+                
+                <td><button (click)="getMovies()" style="background-color: transparent; border:none; color:aliceblue">Movies</button></td>
+                <td><button (click)="getTickets()" style="background-color: transparent; border:none; color:aliceblue">Tickets</button></td>
+             
+              </tr>
+              
+            
+          </table>
+    </div>
+    <div class="card-body" style="padding-top: 40px;">
+
+        <table *ngIf="mov" class="table table-hover table-info" style="width: 80%; margin:auto; margin-bottom: 20px;">
+            <thead>
+              <tr>
+                <th scope="col">Image</th>
+                <th scope="col">Movie Id</th>
+                <th scope="col">Movie Name</th>
+                <th scope="col">Theatre Name</th>
+                <th scope="col">Director Name</th>
+                <th scope="col">Screening Type</th>
+                <th scope="col">Total Seats</th>
+                <th scope="col">Seats Available</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let mov of movies, let i=index">
+                <td><img [src]="mov.imageUrl" width="60px" height="60px"/></td>
+                <td>{{mov.movieId}}</td>
+                <td>{{mov.movieName}}</td>
+                <td>{{mov.theatreName}}</td>
+                <td>{{mov.directorName}}</td>
+                <td>{{mov.screeningType}}</td>
+                <td>{{mov.totalSeats}}</td>
+                <td>{{mov.seatsAvailable}}</td>
+                <td><span class="material-icons" (click)="openDialog(mov)">edit</span></td>
+                <td><span class="material-icons" (click)="deleteMovie(mov)">delete</span></td>
+              </tr>
+              
+            </tbody>
+          </table>
+
+          <table *ngIf="tick" class="table table-hover table-danger" style="width: 80%; margin:auto; margin-bottom: 20px;">
+            <thead>
+              <tr>
+                <th scope="col">Movie Id</th>
+                <th scope="col">Ticket Transaction Id</th>
+                <th scope="col">Ticket Booking Name</th>
+                <th scope="col">Booked Seats</th>
+                <th scope="col">Available Seats</th>
+                
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let t of tickets, let i=index">
+                <td>{{t.movie_id_fk}}</td>
+                <td>{{t.transactionId}}</td>
+                <td>{{t.bookingName}}</td>
+                <td>{{t.bookedSeats}}</td>
+                <td>{{t.seatsAvailable}}</td>
+              </tr>
+              
+            </tbody>
+          </table>
+     
+
+    </div>
+    
+  </div>
